@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:48 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 17:25:31 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/22 17:31:53 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define __FT_PRINTF_H
 
 # include <stdbool.h>
+# include <stdarg.h>
 
 # define STRNCMP(a, b, n) __builtin_strncmp(a, b, n)
 # define STRCPY(a, b) __builtin_strcpy(a, b)

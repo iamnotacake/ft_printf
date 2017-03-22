@@ -6,7 +6,7 @@
 #    By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/22 16:43:25 by alischyn          #+#    #+#              #
-#    Updated: 2017/03/22 17:21:25 by alischyn         ###   ########.fr        #
+#    Updated: 2017/03/22 17:44:15 by alischyn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,3 +31,6 @@ clean:
 
 fclean:
 	rm -rf obj $(NAME)
+
+test: all
+	$(CC) test.c $(NAME) -o test
