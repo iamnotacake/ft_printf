@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   format_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/22 17:21:40 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 18:45:03 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/22 19:11:51 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/22 19:15:37 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-const char		*parse(t_fmt *fmt, const char *f)
+void			format_char(t_fmt *fmt, va_list ap)
 {
-	const char	*old;
+	char		chr;
 
-	BZERO(fmt, sizeof(t_fmt));
-	while (true)
-	{
-		old = f;
-		f = parse_flags(fmt, f);
-		f = parse_width(fmt, f);
-		f = parse_precision(fmt, f);
-		f = parse_mod(fmt, f);
-		if (old == f)
-			break ;
-	}
-	if (*f != '\0')
-		fmt->type = *(f++);
-	return (f);
+	chr = va_arg(ap, int);
+	if (fmt->has_width && !fmt->f_minus)
+		APPEND_CHAR_N(fmt->f_zero ? '0' : ' ', fmt->width - 1);
+	APPEND_CHAR(chr);
+	if (fmt->has_width && fmt->f_minus)
+		APPEND_CHAR_N(' ', fmt->width - 1);
 }

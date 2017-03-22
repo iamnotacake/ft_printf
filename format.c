@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   format.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/22 17:21:40 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 18:45:03 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/22 18:30:12 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/22 19:16:26 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-const char		*parse(t_fmt *fmt, const char *f)
+void			format_fmt(t_fmt *fmt, va_list ap)
 {
-	const char	*old;
-
-	BZERO(fmt, sizeof(t_fmt));
-	while (true)
-	{
-		old = f;
-		f = parse_flags(fmt, f);
-		f = parse_width(fmt, f);
-		f = parse_precision(fmt, f);
-		f = parse_mod(fmt, f);
-		if (old == f)
-			break ;
-	}
-	if (*f != '\0')
-		fmt->type = *(f++);
-	return (f);
+	if (IS_CHAR(fmt->type))
+		format_char(fmt, ap);
+	// TODO: Format strings, numbers
+	else if (fmt->type != '\0')
+		format_unknown(fmt);
 }

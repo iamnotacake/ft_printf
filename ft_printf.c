@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:40 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 18:27:17 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/22 18:51:45 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int				ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format = parse(&fmt, ++format);
-			// TODO: Print according to format
+			format_fmt(&fmt, ap);
 		}
 		else
 			APPEND_CHAR(*(format++));
