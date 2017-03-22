@@ -6,14 +6,15 @@
 #    By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/22 16:43:25 by alischyn          #+#    #+#              #
-#    Updated: 2017/03/22 17:44:15 by alischyn         ###   ########.fr        #
+#    Updated: 2017/03/22 18:16:17 by alischyn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
 CFLAGS = -Wall -Wextra -g
 SOURCES = ft_printf.c \
-		  parse.c parse_flags.c parse_width.c parse_precision.c parse_mod.c
+		  parse.c parse_flags.c parse_width.c parse_precision.c parse_mod.c \
+		  str_alloc.c str_append_char.c str_append_string.c
 OBJECTS = $(addprefix obj/,$(subst .c,.o,$(SOURCES)))
 NAME = libftprintf.a
 
@@ -22,7 +23,7 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	ar -cru $@ $^
 
-obj/%.o: %.c
+obj/%.o: %.c *.h
 	@mkdir -p obj
 	$(CC) $(CFLAGS) -c -o $@ $<
 

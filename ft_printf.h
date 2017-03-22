@@ -6,19 +6,17 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:48 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 17:31:53 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/22 18:19:05 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __FT_PRINTF_H
 # define __FT_PRINTF_H
 
+# include <unistd.h>
 # include <stdbool.h>
 # include <stdarg.h>
-
-# define STRNCMP(a, b, n) __builtin_strncmp(a, b, n)
-# define STRCPY(a, b) __builtin_strcpy(a, b)
-# define BZERO(a, n) __builtin_bzero(a, n)
+# include "str.h"
 
 typedef struct	s_fmt
 {
