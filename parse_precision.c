@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   parse_precision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/22 16:46:40 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 16:57:19 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/22 17:11:51 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/22 17:12:42 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int				ft_printf(const char *format, ...)
+#include "ft_printf.h"
+
+const char		*parse_precision(t_fmt *fmt, const char *f)
 {
-	return (0); // TODO
+	if (*f == '.' && f++)
+	{
+		fmt->has_precision = true;
+		fmt->precision = 0;
+		while ('0' <= *f && *f <= '9')
+			fmt->precision = fmt->precision * 10 + *(f++) - '0';
+	}
+	return (f);
 }

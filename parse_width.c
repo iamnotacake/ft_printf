@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   parse_width.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/22 16:46:40 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 16:57:19 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/22 17:07:59 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/22 17:10:34 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int				ft_printf(const char *format, ...)
+#include "ft_printf.h"
+
+const char		*parse_width(t_fmt *fmt, const char *f)
 {
-	return (0); // TODO
+	if ('1' <= *f && *f <= '9')
+	{
+		fmt->has_width = true;
+		fmt->width = 0;
+		while ('0' <= *f && *f <= '9')
+			fmt->width = fmt->width * 10 + *(f++) - '0';
+	}
+	return (f);
 }

@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/22 16:46:40 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 16:57:19 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/22 17:21:40 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/22 17:28:32 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int				ft_printf(const char *format, ...)
+#include "ft_printf.h"
+
+const char		*parse(t_fmt *fmt, const char *f)
 {
-	return (0); // TODO
+	const char	*old;
+
+	BZERO(fmt, sizeof(t_fmt));
+	while (true)
+	{
+		old = f;
+		f = parse_flags(fmt, f);
+		f = parse_width(fmt, f);
+		f = parse_precision(fmt, f);
+		f = parse_mod(fmt, f);
+		if (old == f)
+			break ;
+	}
+	fmt->type = *(f++);
+	return (f);
 }
