@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:48 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 18:19:05 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/22 18:24:29 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include <stdbool.h>
 # include <stdarg.h>
 # include "str.h"
+
+# define APPEND_CHAR(c)			str_append_char(&g_res, (c))
+# define APPEND_CHAR_N(c, n)	str_append_char_n(&g_res, (c), (n))
+# define APPEND_STRING(c)		str_append_string(&g_res, (c))
+# define APPEND_STRING_N(c, n)	str_append_string_n(&g_res, (c), (n))
 
 typedef struct	s_fmt
 {
@@ -32,6 +37,8 @@ typedef struct	s_fmt
 	char	mod[3];
 	char	type;
 }				t_fmt;
+
+t_str			g_res;
 
 int				ft_printf(const char *format, ...);
 

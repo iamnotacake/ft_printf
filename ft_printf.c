@@ -6,18 +6,22 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:40 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 17:39:32 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/22 18:27:17 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+t_str			g_res;
+
 int				ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	t_fmt		fmt;
+	int			res;
 
 	va_start(ap, format);
+	str_init(&g_res);
 	while (*format != '\0')
 	{
 		if (*format == '%')
@@ -26,10 +30,11 @@ int				ft_printf(const char *format, ...)
 			// TODO: Print according to format
 		}
 		else
-		{
-			format++; // TODO: Append current char to result string
-		}
+			APPEND_CHAR(*(format++));
 	}
 	va_end(ap);
-	return (0); // TODO: Print string and return length
+	write(1, g_res.string, g_res.length);
+	res = g_res.length;
+	str_free(&g_res);
+	return (res);
 }
