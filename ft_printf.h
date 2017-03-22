@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:48 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 19:23:53 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/22 19:53:43 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 # define APPEND_STRING(c)		str_append_string(&g_res, (c))
 # define APPEND_STRING_N(c, n)	str_append_string_n(&g_res, (c), (n))
 
-# define IS_CHAR(c)				((c) == 'c' || (c) == 'C')
-# define IS_STRING(c)			((c) == 's' || (c) == 'S')
+# define IS_CHAR(f)			((f)->type == 'c' || (f)->type == 'C')
+# define IS_WSTRING(f)		(STRCMP((f)->mod, "l") == 0 || (f)->type == 'S')
+# define IS_STRING(f)		((f)->type == 's')
 
 typedef struct	s_fmt
 {
@@ -57,6 +58,7 @@ void			format_unknown(t_fmt *fmt);
 
 void			format_char(t_fmt *fmt, va_list ap);
 
+void			format_wstring(t_fmt *fmt, va_list ap);
 void			format_string(t_fmt *fmt, va_list ap);
 
 #endif

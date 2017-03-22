@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:49:34 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 18:14:19 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/22 19:39:49 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define MEMCPY(a, b, n) __builtin_memcpy(a, b, n)
 # define BZERO(a, n) __builtin_bzero(a, n)
 # define STRLEN(a) __builtin_strlen(a)
+# define STRCMP(a, b) __builtin_strcmp(a, b)
 
 # define ALLOC_CHUNK 64
 
