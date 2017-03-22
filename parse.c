@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:21:40 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 17:28:32 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/22 18:44:14 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ const char		*parse(t_fmt *fmt, const char *f)
 		if (old == f)
 			break ;
 	}
-	fmt->type = *(f++);
+	if (*f)
+		fmt->type = *(f++);
 	return (f);
 }
