@@ -6,12 +6,12 @@
 #    By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/22 16:43:25 by alischyn          #+#    #+#              #
-#    Updated: 2017/03/23 19:12:21 by alischyn         ###   ########.fr        #
+#    Updated: 2017/03/23 19:16:46 by alischyn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra
 SOURCES = ft_printf.c \
 		  parse.c \
 		  parse_flags.c \
@@ -33,6 +33,12 @@ SOURCES = ft_printf.c \
 		  format_n.c
 OBJECTS = $(addprefix obj/,$(subst .c,.o,$(SOURCES)))
 NAME = libftprintf.a
+
+ifeq ($(DEBUG),1)
+CFLAGS += -g
+else
+CFLAGS += -O3
+endif
 
 all: $(NAME)
 
