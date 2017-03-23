@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:48 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 19:03:18 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 19:12:12 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,7 @@ void			format_number_decimal(t_fmt *fmt, va_list ap);
 void			format_number_octal(t_fmt *fmt, va_list ap);
 
 void			format_number_hexadecimal(t_fmt *fmt, va_list ap);
+
+void			format_n(t_fmt *fmt, va_list ap);
 
 #endif

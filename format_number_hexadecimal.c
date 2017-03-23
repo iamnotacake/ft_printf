@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 17:08:32 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 17:29:03 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 17:33:57 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void			format_number_hexadecimal(t_fmt *fmt, va_list ap)
 	number = uintmax_to_any(pull_number_unsigned(fmt, ap),
 							16, fmt->type == 'X');
 	number = format_number_prep_zeros(fmt, number);
-	if (fmt->f_octo)
+	if (fmt->f_octo || fmt->type == 'p')
 		STRCPY(sign, fmt->type == 'X' ? "0X" : "0x");
 	else
 		sign[0] = '\0';
