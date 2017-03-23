@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 20:03:24 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 16:16:09 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 16:25:38 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void			format_number_decimal(t_fmt *fmt, va_list ap)
 	number = format_number_decimal_prep_zeros(fmt, number);
 	if (fmt->has_precision && fmt->precision == 0 && number_is_zero(number))
 		number[0] = '\0';
-	if (fmt->f_space && !fmt->has_width && sign != '-')
+	if (fmt->f_space && sign != '-' && ((!fmt->has_width) ||
+		(fmt->has_width && fmt->has_precision)))
 		sign = ' ';
 	if (fmt->f_plus && sign != '-')
 		sign = '+';
