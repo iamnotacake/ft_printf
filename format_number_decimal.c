@@ -6,13 +6,13 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 20:03:24 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 16:44:43 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 16:48:35 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char			*format_number_decimal_prep_zeros(t_fmt *fmt, char *number)
+char			*format_number_prep_zeros(t_fmt *fmt, char *number)
 {
 	while (fmt->has_precision && (int)STRLEN(number) < fmt->precision)
 		*(--number) = '0';
@@ -36,7 +36,7 @@ void			format_number_decimal(t_fmt *fmt, va_list ap)
 	number = IS_DECIMAL(fmt)
 			? intmax_to_any(pull_number_signed(fmt, ap), 10, false, &sign)
 			: uintmax_to_any(pull_number_unsigned(fmt, ap), 10, false);
-	number = format_number_decimal_prep_zeros(fmt, number);
+	number = format_number_prep_zeros(fmt, number);
 	if (fmt->has_precision && fmt->precision == 0 && number_is_zero(number))
 		number[0] = '\0';
 	if (fmt->f_space && sign != '-' && ((!fmt->has_width) ||

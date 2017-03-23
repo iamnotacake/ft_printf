@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:48 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 16:40:54 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 16:53:05 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define IS_WSTRING(f)	(!STRCMP(f->mod, "l") && IS_STRING(f) || f->type == 'S')
 # define IS_DECIMAL(f)	(f->type == 'd' || f->type == 'D' || f->type == 'i')
 # define IS_UNSIGNED(f)	(f->type == 'u' || f->type == 'U')
+# define IS_OCTAL(f)	(f->type == 'o' || f->type == 'O')
 
 typedef struct	s_fmt
 {
@@ -70,6 +71,10 @@ intmax_t		pull_number_signed(t_fmt *fmt, va_list ap);
 char			*uintmax_to_any(uintmax_t n, int b, bool up);
 char			*intmax_to_any(intmax_t n, int b, bool up, char *sign);
 
+char			*format_number_prep_zeros(t_fmt *fmt, char *number);
+bool			number_is_zero(const char *number);
 void			format_number_decimal(t_fmt *fmt, va_list ap);
+
+void			format_number_octal(t_fmt *fmt, va_list ap);
 
 #endif
