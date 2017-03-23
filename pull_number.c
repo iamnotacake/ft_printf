@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 20:10:40 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 20:31:48 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 16:36:30 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ uintmax_t		pull_number_unsigned(t_fmt *fmt, va_list ap)
 	if (fmt->type == 'p')
 		return ((uintmax_t)va_arg(ap, void *));
 	if (STRCMP(fmt->mod, "hh") == 0)
-		return ((unsigned short)va_arg(ap, unsigned int));
-	if (STRCMP(fmt->mod, "h") == 0)
 		return ((unsigned char)va_arg(ap, unsigned int));
+	if (STRCMP(fmt->mod, "h") == 0)
+		return ((unsigned short)va_arg(ap, unsigned int));
 	if (STRCMP(fmt->mod, "ll") == 0)
 		return ((unsigned long long)va_arg(ap, unsigned long long));
 	if (STRCMP(fmt->mod, "l") == 0)
@@ -38,9 +38,9 @@ intmax_t		pull_number_signed(t_fmt *fmt, va_list ap)
 	if (fmt->type == 'D')
 		return ((signed long)va_arg(ap, signed long));
 	if (STRCMP(fmt->mod, "hh") == 0)
-		return ((signed short)va_arg(ap, signed int));
-	if (STRCMP(fmt->mod, "h") == 0)
 		return ((signed char)va_arg(ap, signed int));
+	if (STRCMP(fmt->mod, "h") == 0)
+		return ((signed short)va_arg(ap, signed int));
 	if (STRCMP(fmt->mod, "ll") == 0)
 		return ((signed long long)va_arg(ap, signed long long));
 	if (STRCMP(fmt->mod, "l") == 0)
