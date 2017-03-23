@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:07:59 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 17:47:55 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 17:53:07 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 const char		*parse_width(t_fmt *fmt, const char *f, va_list ap)
 {
-	if (*f == '*')
+	if (*f == '*' && f++)
 	{
 		fmt->has_width = true;
 		fmt->width = va_arg(ap, int);
