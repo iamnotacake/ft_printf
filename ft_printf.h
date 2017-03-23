@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:48 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 16:53:05 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 17:09:31 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define IS_DECIMAL(f)	(f->type == 'd' || f->type == 'D' || f->type == 'i')
 # define IS_UNSIGNED(f)	(f->type == 'u' || f->type == 'U')
 # define IS_OCTAL(f)	(f->type == 'o' || f->type == 'O')
+# define IS_HEX(f)		(f->type == 'x' || f->type == 'X' || f->type == 'p')
 
 typedef struct	s_fmt
 {
@@ -76,5 +77,7 @@ bool			number_is_zero(const char *number);
 void			format_number_decimal(t_fmt *fmt, va_list ap);
 
 void			format_number_octal(t_fmt *fmt, va_list ap);
+
+void			format_number_hexadecimal(t_fmt *fmt, va_list ap);
 
 #endif
