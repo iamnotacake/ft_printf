@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format.c                                           :+:      :+:    :+:   */
+/*   format_number.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/22 18:30:12 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 20:15:50 by alischyn         ###   ########.fr       */
+/*   Created: 2017/03/22 20:39:23 by alischyn          #+#    #+#             */
+/*   Updated: 2017/03/23 15:06:07 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void			format_fmt(t_fmt *fmt, va_list ap)
+char			*uintmax_to_any(uintmax_t n, int b, bool up)
 {
-	if (IS_CHAR(fmt))
-		format_char(fmt, ap);
-	else if (IS_WSTRING(fmt))
-		format_wstring(fmt, ap);
-	else if (IS_STRING(fmt))
-		format_string(fmt, ap);
-	else if (IS_DECIMAL(fmt))
-		format_number_decimal(fmt, ap);
-	// TODO: Format hexadecimals, octals
-	else if (fmt->type != '\0')
-		format_unknown(fmt);
+	static char	res[1024];
+	int			i;
+	const char	*alpha;
+
+	alpha = up ? "0123456789ABCDEF" : "0123456789abcdef";
+	i = 512;
+	res[i] = '\0';
+	while (true)
+	{
+		res[--i] = alpha[n % b];
+		n /= b;
+		if (n == 0)
+			break ;
+	}
+	return (&res[i]);
+}
+
+char			*intmax_to_any(intmax_t n, int b, bool up, char *sign)
+{
+	*sign = n < 0 ? '-' : '\0';
+	return (uintmax_to_any(n < 0 ? -n : n, b, up));
 }

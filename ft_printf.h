@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:48 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 19:53:43 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/22 20:56:43 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define __FT_PRINTF_H
 
 # include <unistd.h>
+# include <stdint.h>
 # include <stdbool.h>
 # include <stdarg.h>
 # include "str.h"
@@ -23,9 +24,10 @@
 # define APPEND_STRING(c)		str_append_string(&g_res, (c))
 # define APPEND_STRING_N(c, n)	str_append_string_n(&g_res, (c), (n))
 
-# define IS_CHAR(f)			((f)->type == 'c' || (f)->type == 'C')
-# define IS_WSTRING(f)		(STRCMP((f)->mod, "l") == 0 || (f)->type == 'S')
-# define IS_STRING(f)		((f)->type == 's')
+# define IS_CHAR(f)		(f->type == 'c' || f->type == 'C')
+# define IS_STRING(f)	(f->type == 's')
+# define IS_WSTRING(f)	(!STRCMP(f->mod, "l") && IS_STRING(f) || f->type == 'S')
+# define IS_DECIMAL(f)	(f->type == 'd' || f->type == 'D' || f->type == 'i')
 
 typedef struct	s_fmt
 {
@@ -60,5 +62,13 @@ void			format_char(t_fmt *fmt, va_list ap);
 
 void			format_wstring(t_fmt *fmt, va_list ap);
 void			format_string(t_fmt *fmt, va_list ap);
+
+uintmax_t		pull_number_unsigned(t_fmt *fmt, va_list ap);
+intmax_t		pull_number_signed(t_fmt *fmt, va_list ap);
+
+char			*uintmax_to_any(uintmax_t n, int b, bool up);
+char			*intmax_to_any(intmax_t n, int b, bool up, char *sign);
+
+void			format_number_decimal(t_fmt *fmt, va_list ap);
 
 #endif
