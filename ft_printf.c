@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:40 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 17:38:24 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 18:24:06 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,51 @@ int				ft_printf(const char *format, ...)
 	res = g_res.length;
 	str_free(&g_res);
 	return (res);
+}
+
+int				ft_sprintf(char *dest, const char *format, ...)
+{
+	va_list		ap;
+	t_fmt		fmt;
+	int			res;
+
+	va_start(ap, format);
+	str_init(&g_res);
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			format = parse(&fmt, ++format, ap);
+			format_fmt(&fmt, ap);
+		}
+		else
+			APPEND_CHAR(*(format++));
+	}
+	va_end(ap);
+	STRCPY(dest, g_res.string);
+	res = g_res.length;
+	str_free(&g_res);
+	return (g_res.length);
+}
+
+int				ft_asprintf(char **dest, const char *format, ...)
+{
+	va_list		ap;
+	t_fmt		fmt;
+
+	va_start(ap, format);
+	str_init(&g_res);
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			format = parse(&fmt, ++format, ap);
+			format_fmt(&fmt, ap);
+		}
+		else
+			APPEND_CHAR(*(format++));
+	}
+	va_end(ap);
+	*dest = g_res.string;
+	return (g_res.length);
 }
