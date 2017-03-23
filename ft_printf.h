@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:48 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 20:56:43 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 16:40:54 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define IS_STRING(f)	(f->type == 's')
 # define IS_WSTRING(f)	(!STRCMP(f->mod, "l") && IS_STRING(f) || f->type == 'S')
 # define IS_DECIMAL(f)	(f->type == 'd' || f->type == 'D' || f->type == 'i')
+# define IS_UNSIGNED(f)	(f->type == 'u' || f->type == 'U')
 
 typedef struct	s_fmt
 {

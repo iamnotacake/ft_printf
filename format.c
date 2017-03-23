@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 18:30:12 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 20:15:50 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 16:42:15 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void			format_fmt(t_fmt *fmt, va_list ap)
 		format_wstring(fmt, ap);
 	else if (IS_STRING(fmt))
 		format_string(fmt, ap);
-	else if (IS_DECIMAL(fmt))
+	else if (IS_DECIMAL(fmt) || IS_UNSIGNED(fmt))
 		format_number_decimal(fmt, ap);
 	// TODO: Format hexadecimals, octals
 	else if (fmt->type != '\0')

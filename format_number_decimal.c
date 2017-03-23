@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 20:03:24 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 16:25:38 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 16:44:43 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void			format_number_decimal(t_fmt *fmt, va_list ap)
 	if ((!fmt->f_minus && !fmt->f_zero && fmt->has_width) ||
 		(!fmt->f_minus && fmt->f_zero && fmt->has_width && fmt->has_precision))
 		APPEND_CHAR_N(' ', fmt->width - STRLEN(number) - (sign ? 1 : 0));
-	if (sign != '\0')
+	if (sign != '\0' && fmt->type != 'u' && fmt->type != 'U')
 		APPEND_CHAR(sign);
 	if (!fmt->f_minus && fmt->f_zero && fmt->has_width && !fmt->has_precision)
 		APPEND_CHAR_N('0', fmt->width - STRLEN(number) - (sign ? 1 : 0));
