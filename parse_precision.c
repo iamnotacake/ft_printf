@@ -6,20 +6,23 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:11:51 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 17:12:42 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 17:48:23 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-const char		*parse_precision(t_fmt *fmt, const char *f)
+const char		*parse_precision(t_fmt *fmt, const char *f, va_list ap)
 {
 	if (*f == '.' && f++)
 	{
 		fmt->has_precision = true;
 		fmt->precision = 0;
-		while ('0' <= *f && *f <= '9')
-			fmt->precision = fmt->precision * 10 + *(f++) - '0';
+		if (*f == '*')
+			fmt->precision = va_arg(ap, int);
+		else
+			while ('0' <= *f && *f <= '9')
+				fmt->precision = fmt->precision * 10 + *(f++) - '0';
 	}
 	return (f);
 }

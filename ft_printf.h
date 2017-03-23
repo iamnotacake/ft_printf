@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:48 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 17:09:31 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 17:38:24 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ t_str			g_res;
 
 int				ft_printf(const char *format, ...);
 
-const char		*parse(t_fmt *fmt, const char *f);
+const char		*parse(t_fmt *fmt, const char *f, va_list ap);
 const char		*parse_flags(t_fmt *fmt, const char *f);
-const char		*parse_width(t_fmt *fmt, const char *f);
-const char		*parse_precision(t_fmt *fmt, const char *f);
+const char		*parse_width(t_fmt *fmt, const char *f, va_list ap);
+const char		*parse_precision(t_fmt *fmt, const char *f, va_list ap);
 const char		*parse_mod(t_fmt *fmt, const char *f);
 
 void			format_fmt(t_fmt *fmt, va_list ap);

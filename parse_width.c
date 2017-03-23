@@ -6,15 +6,20 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:07:59 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/22 17:10:34 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 17:47:55 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-const char		*parse_width(t_fmt *fmt, const char *f)
+const char		*parse_width(t_fmt *fmt, const char *f, va_list ap)
 {
-	if ('1' <= *f && *f <= '9')
+	if (*f == '*')
+	{
+		fmt->has_width = true;
+		fmt->width = va_arg(ap, int);
+	}
+	else if ('1' <= *f && *f <= '9')
 	{
 		fmt->has_width = true;
 		fmt->width = 0;
