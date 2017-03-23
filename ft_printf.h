@@ -6,7 +6,7 @@
 /*   By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 16:46:48 by alischyn          #+#    #+#             */
-/*   Updated: 2017/03/23 18:24:15 by alischyn         ###   ########.fr       */
+/*   Updated: 2017/03/23 19:03:18 by alischyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct	s_fmt
 t_str			g_res;
 
 int				ft_printf(const char *format, ...);
+int				ft_fdprintf(int fd, const char *format, ...);
 int				ft_sprintf(char *dest, const char *format, ...);
 int				ft_asprintf(char **dest, const char *format, ...);
 
