@@ -6,11 +6,11 @@
 #    By: alischyn <alischyn@student.unit.ua>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/22 16:43:25 by alischyn          #+#    #+#              #
-#    Updated: 2017/03/23 14:48:53 by alischyn         ###   ########.fr        #
+#    Updated: 2017/03/23 16:18:20 by alischyn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -g
 SOURCES = ft_printf.c \
 		  parse.c \
